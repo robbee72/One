@@ -1,7 +1,7 @@
 var data = [
   {
     id: 0,
-    name: 'Shimano ',
+    Manufacturer: 'Shimano ',
     model: 'Sedona 2800',
     price: 79.99,
     currency: ' ',
@@ -10,7 +10,7 @@ var data = [
   },
   {
     id: 1,
-    name: 'Abu Garcia Revo',
+    Manufacturer: 'Abu Garcia Revo',
     model: 'Revo Bait Casting low-profile',
     price: 99.99,
     currency: ' ',
@@ -19,7 +19,7 @@ var data = [
   },
   {
     id: 2,
-    name: 'Sage Domain',
+    Manufacturer: 'Sage Domain',
     model: '5-6 weight fly fishing reel',
     price: 399.99,
     currency: ' ',
@@ -28,7 +28,7 @@ var data = [
   },
   {
     id: 3,
-    name: 'Abu Garcia Vendetta',
+    Manufacturer: 'Abu Garcia Vendetta',
     model: 'bait casting rod | 7/" Med. Heavy ',
     price: 79.95,
     currency: ' ',
@@ -37,7 +37,7 @@ var data = [
   },
   {
     id: 4,
-    name: 'Strike King Jerkbaits',
+    Manufacturer: 'Strike King Jerkbaits',
     model: 'KVD J300 Jerkbaits',
     price: 7.49,
     currency: ' ',
@@ -46,7 +46,7 @@ var data = [
   },
   {
     id: 5,
-    name: 'Sage Freshwater Fly Rod',
+    Manufacturer: 'Sage Freshwater Fly Rod',
     model: 'The X 590-4',
     price: 899.00,
     currency: ' ',

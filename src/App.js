@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import Cart from './containers/Cart';
 import ProductList from './containers/ProductList';
+import firebase from './firebase';
 import uuid from 'uuid';
 import $ from 'jquery';
 import Navs from './components/Navs';
-import Projects from './components/Projects';
-import AddProject from './components/AddProject';
+import Products from './components/Products';
+import AddProduct from './components/AddProduct';
 import Footers from './components/Footers';
 import './App.css';
 
 class App extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       carts: [],
       navs: [],
-      projects: [],
-      footers:[]
-    }
+      products: [],
+      footers:[],
+      data: null,
+      newData: ''
+    };
+
+    this.dataRef = firebase.database().ref();
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleChange = this.handleChange.bind(this);
   }
 
-  getProjects(){
-    this.setState({projects: [
+  getProducts(){
+    this.setState({products: [
       {
         id:uuid.v4(),
         title: 'Technology',
@@ -56,37 +63,65 @@ class App extends Component {
         });
       }.bind(this),
       error: function(xhr, status, err){
-        
+
       }
     });
   }
 
   componentWillMount(){
-    this.getProjects();
+    this.getProducts();
     this.getFooters();
+    this.dataRef.on('value', snapshot => {
+			const data = Object.entries(snapshot.val()).map(([key, value]) => ({
+				key,
+				value
+			}));
+			this.setState({ data });
+		});
   }
 
   componentDidMount(){
     this.getFooters();
   }
 
-  handleAddProject(project){
-    let projects = this.state.projects;
-    projects.push(project);
-    this.setState({projects:projects});
+  handleChange(event) {
+    this.setState({
+      newData: event.target.value
+    });
   }
 
-  handleDeleteProject(id){
-    let projects = this.state.projects;
-    let index = projects.findIndex(x => x.id === id);
-    projects.splice(index, 1);
-    this.setState({projects:projects});
+  handleSubmit(event) {
+  		event.preventDefault();
+  		this.dataRef.push(this.state.newData);
+  		this.setState({ newData: '' });
+  	}
+
+  handleAddProduct(product){
+    let products = this.state.products;
+    products.push(product);
+    this.setState({products:products});
+  }
+
+  handleDeleteProduct(id){
+    let products = this.state.products;
+    let index = products.findIndex(x => x.id === id);
+    products.splice(index, 1);
+    this.setState({products:products});
   }
 
   render() {
     return (
       <div className="App">
         <Navs />
+        <div className="App-header">
+					<h4>Spirit Creek Capital</h4>
+				</div>
+				<pre className="App-data">{JSON.stringify(this.state.data, null, 2)}</pre>
+				<form className="App-form" onSubmit={this.handleSubmit}>
+					<input value={this.state.newData.Manufacturer} onChange={this.handleChange} />
+					<input type="submit" disabled={!this.state.newData} />
+				</form>
+
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
@@ -104,8 +139,8 @@ class App extends Component {
         </div>
         <br />
 
-        <AddProject addProject={this.handleAddProject.bind(this)} />
-        <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
+        <AddProduct addProduct={this.handleAddProduct.bind(this)} />
+        <Products products={this.state.products} onDelete={this.handleDeleteProduct.bind(this)} />
         <hr />
         <Footers footers={this.state.footers} />
           <footer>

@@ -13,14 +13,14 @@ class Product extends Component {
     }
 
     render() {
-        const { name, model, price, currency, image, url, isInCart } = this.props;
+        const { Manufacturer, model, price, currency, image, url, isInCart } = this.props;
 
         return (
             <div className="product thumbnail">
                 <img src={image} alt="product" />
                 <div className="caption">
                     <h3>
-                        <a href={url}>{name}</a>
+                        <a href={url}>{Manufacturer}</a>
                     </h3>
                     <div className="product__model">Model:  {model}</div>
                     <div className="product__price">${price}<small>{currency}</small></div>

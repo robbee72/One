@@ -31,7 +31,7 @@ import './Navs.css';
                   <div className="col-md-6 col-sm-6">
                     <div className="quick-contacts">
                         <span><i className="icon-phone"></i> (00) 123 456 789</span>
-                        <span><i className="icon-envelope"></i><a href="#">email@gmail.com</a></span>
+                        <span><i className="icon-envelope"></i><a href="gmail.com">email@gmail.com</a></span>
                     </div>
                   </div>
                 </div>
@@ -46,13 +46,13 @@ import './Navs.css';
                       <span className="icon-bar"></span>
                       <span className="icon-bar"></span>
                     </button>
-                    <a className="navbar-brand" href="index.html"></a>
+
                   </div>
 
                   <div className="collapse navbar-collapse" id="navbar">
                     <ul className="nav navbar-nav navbar-right">
                       <li className="active"><a href="index.html">Home</a></li>
-                      <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="#" >Pages</a>
+                      <li className="dropdown"><a className="dropdown-toggle" data-toggle="dropdown" href="index.html" >Pages</a>
                       </li>
                     </ul>
                   </div>
