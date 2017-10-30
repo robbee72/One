@@ -1,0 +1,254 @@
+@charset "UTF-8";
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: content-box;
+  width: 100%;
+  padding: 0;
+  border-width: 0;
+}
+
+body {
+	font-family: "Cabin", Arial, Geneva, sans-serif;
+	background-image: url(../img//background/clouds.jpg);
+	margin: 0px;
+	padding: 20px;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Niconne', cursive;
+  font-weight: normal;
+  color: #C80060;
+  margin-top: 0;
+}
+.wrapper {
+	margin: 0 auto;
+}
+article img {
+  border-radius: 10px;
+  width: 100%;
+  max-width: 150px;
+}
+
+.crop {
+ height: 300px;
+ width: 400px;
+ overflow: hidden;
+}
+.crop img {
+ height: auto;
+ width: 400px;
+}
+.product.thumbnail {
+  width: 20%;
+}
+
+.btn, h1 {
+  margin: 10px;
+}
+nav ul {
+  list-style-type: none;
+  background-color: #e6bf98;
+  padding: .75em;
+  margin: 0;
+  border-bottom: 3px solid #cc8850;
+  overflow: auto;
+}
+
+nav li:nth-child(even) {
+  width: 50%;
+  float: right;
+  padding: 0.5em;
+}
+nav li:nth-child(odd) {
+  width: 50%;
+  float: left;
+    padding: 0.5em;
+}
+nav a {
+  color: #c80060;
+  text-decoration: none;
+  display: block;
+  padding-left:3.333333%;
+}
+nav a:hover {
+  color:#00c4c7;
+}
+/* cart css */
+.cart ul {
+  margin-bottom: .7em;
+}
+
+.cart-item {
+  margin-bottom: .3em;
+}
+
+.cart-item__name {
+  display: inline-block;
+}
+
+.cart-item__price {
+  float: right;
+}
+
+.cart__total {
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1.1em;
+  text-align: right;
+}
+
+/*product css*/
+.product {
+  background-color: #69cdd4;
+  list-style-type: none;
+  width: inherit;
+  padding: 0;
+  margin: 0;
+  border: 3px solid silver;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.product__price {
+    display: inline-block;
+    line-height: 34px;
+}
+
+.product__button-wrap {
+    float: right;
+}
+
+.product-list {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+
+.product-list__item {
+    list-style: none;
+    width: 32%;
+}
+[class*='sidebar'] {
+  border: 1px solid #00c4c7;
+  border-radius: 10px;
+  margin: 3em 0;
+}
+[class*='sidebar'] h3 {
+  margin: 0;
+  color: white;
+  background-color: #00c4c7;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-left: 0.5em;
+}
+[class*='sidebar'] img {
+  border-radius: 0px 0px 10px 10px;
+  width: 70%;
+  max-width: 250px;
+  display: block; /* without this, there is a gap between the image and border -- space for descenders in text, for inline elements */
+}
+.sidebar-secondary {
+  border-color: #c80060;
+}
+.sidebar-secondary h3 {
+  background-color: #c80060;
+}
+blockquote {
+  padding: 0em;
+  margin: 0;
+}
+blockquote p,
+blockquote cite {
+  padding: 0 1em;
+}
+blockquote cite {
+  text-transform: uppercase;
+  font-style: normal;
+  padding-bottom: 1em;
+  display: block;
+}
+footer {
+  background-color: #00CDD1;
+  color: white;
+  clear: both;
+  margin: 0 0.5em 3em 0.5em;
+}
+footer p {
+  text-align: center;
+}
+footer img {
+  width: 52px;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 350px) {
+  .wrapper {
+      width: 75%;
+      max-width: 625px;
+  }
+
+ nav li,
+  nav li:nth-child(even),
+  nav li:nth-child(odd) {
+    display: inline-block;
+    width: auto;
+    float: none;
+    padding: 0;
+  }
+  nav a {
+    padding: 0em 1em;
+
+  }
+  .content {
+    display: grid;
+    grid-gap: 1em;
+  }
+  .aside {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 850px) {
+  .wrapper {
+      width: 70%;
+      max-width: 800px;
+      float: none;
+  }
+  h2 {
+    font-size: 3em;
+    border-bottom: 2px dotted #c80060;
+  }
+  h3 {
+    font-size: 2em;
+  }
+  div.row {
+    padding: 0;
+  }
+  nav li,
+  nav li:nth-child(even),
+  nav li:nth-child(odd) {
+    display: inline-block;
+    width: auto;
+    padding: 0;
+  }
+  .content {
+       grid-template-columns: 3fr 1fr;
+       grid-gap: 3em;
+    }
+  .aside {
+    display: block;
+  }
+
+
+}

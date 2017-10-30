@@ -1,36 +1,23 @@
 import React, { Component } from 'react';
+import Cart from './containers/Cart';
+import ProductList from './containers/ProductList';
 import uuid from 'uuid';
 import $ from 'jquery';
-import Navs from './Components/Navs';
-import Projects from './Components/Projects';
-import AddProject from './Components/AddProject';
-import Todos from './Components/Todos';
+import Navs from './components/Navs';
+import Projects from './components/Projects';
+import AddProject from './components/AddProject';
+import Footers from './components/Footers';
 import './App.css';
 
 class App extends Component {
   constructor(){
     super();
     this.state = {
+      carts: [],
       navs: [],
       projects: [],
-      todos:[]
+      footers:[]
     }
-  }
-
-  getTodos(){
-    $.ajax({
-      url: 'https://jsonplaceholder.typicode.com/todos',
-      dataType:'json',
-      cache: false,
-      success: function(data){
-        this.setState({todos: data}, function(){
-          console.log(this.state);
-        });
-      }.bind(this),
-      error: function(xhr, status, err){
-        console.log(err);
-      }
-    });
   }
 
   getProjects(){
@@ -58,13 +45,29 @@ class App extends Component {
     ]});
   }
 
+  getFooters(){
+    $.ajax({
+
+      dataType:'json',
+      cache: false,
+      success: function(data){
+        this.setState({footers: data}, function(){
+          console.log(this.state);
+        });
+      }.bind(this),
+      error: function(xhr, status, err){
+        
+      }
+    });
+  }
+
   componentWillMount(){
     this.getProjects();
-    this.getTodos();
+    this.getFooters();
   }
 
   componentDidMount(){
-    this.getTodos();
+    this.getFooters();
   }
 
   handleAddProject(project){
@@ -84,11 +87,32 @@ class App extends Component {
     return (
       <div className="App">
         <Navs />
+        <div className="container">
+            <div className="row">
+                <div className="col-md-12">
+                    <h1>Spirit Creek Capital</h1>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-8">
+                    <ProductList />
+                </div>
+                <div className="col-md-4">
+                    <Cart />
+                </div>
+            </div>
+        </div>
+        <br />
 
         <AddProject addProject={this.handleAddProject.bind(this)} />
         <Projects projects={this.state.projects} onDelete={this.handleDeleteProject.bind(this)} />
         <hr />
-        <Todos todos={this.state.todos} />
+        <Footers footers={this.state.footers} />
+          <footer>
+              <small>
+                  presented by: <h4>Mad Hatter Creek </h4>
+              </small>
+          </footer>
       </div>
     );
   }
